@@ -158,7 +158,7 @@ module.exports = class File extends Block{
     	Permissions:77,
     	author:author
   	};
-  	console.log('inode'+inode)
+  	// console.log('inode'+inode)
   }
 
   cdFolder(name){
@@ -190,7 +190,7 @@ module.exports = class File extends Block{
   	}
   	if (this.file[index].type === 'folder') {
   		let fs = this.readFile(index);
-  		console.log(father+'index'+index);
+  		// console.log(father+'index'+index);
   		for (var i = 0; i < fs.length; i++) {
   			if (fs[i].name!==undefined) {
   				this.rmFile(fs[i].name,index);
