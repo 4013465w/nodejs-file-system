@@ -12,7 +12,8 @@
 >1. 用户系统，并没有实现用户的管理及用户组管理，默认用户名 root 密码 root
 2. `cd,rm,mkdir,touch,cat,ls`等简单命令
 3. 写文件命令为 w fileName  文件内容
-
+####截图
+![截图](http://www.fddcn.cn/wp-content/uploads/2016/05/sasas-300x196.png)
 ##License
 
 The MIT License (MIT)
