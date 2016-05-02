@@ -15,12 +15,15 @@ module.exports = class User {
   }
   /**
    * 新建用户
-   *返回值
-   *0:用户名占用
-   *1:成功
-   *-1:没有权限
    */
-  createUser(userid,username,pwd){
-
+  createUser(userid,pwd){
+  	if (this.users.hasOwnProperty(userid)) {
+  		return "用户名被占用";
+  	}else if (!userid||!pwd) {
+  		return '无效用户名或密码';
+  	}else{
+  		this.users[userid] = {pwd:pwd};
+  		return false;
+  	}
   }
 };

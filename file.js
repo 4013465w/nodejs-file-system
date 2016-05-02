@@ -57,7 +57,7 @@ function order() {
 			      count = login(args,count);
 			      break;
 			    case 'useradd':
-			    console.log(colors.silly('useradd'));
+			    	out.error(user.createUser(args[0],args[1]));
 			    count =0;
 			    break;
 			    case 'ls':
