@@ -15,7 +15,7 @@ colors.setTheme({
 exports.list = function(arr,inode) {
 	arr.forEach((file,index)=>{
 	let ind =inode[file.id];
-	let str = index+'  '+file.name+'  size:'+ind.size+'  time:'+ind.time+' author:'+ind.author;
+	let str = index+'  '+file.name+'  size:'+ind.size+'  time:'+ind.time+' author:'+ind.author+' P:'+ind.Permissions;
 		ind.type === 'folder'&& (str = colors.help(str));
 		console.log(str);
 	})

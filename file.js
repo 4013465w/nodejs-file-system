@@ -64,18 +64,38 @@ function order() {
 			    	out.list(file.showList(),file.file);
 			    break;
 			    case 'touch':
+			    var o = file.checkPermission(false,user.curUser,2)
+			    	if (o!=true) {
+			    		out.error(o);
+			    		break;
+			    	}
 			    	file.createFile(args[0],'file',user.curUser)
 			    	count =0;
 			    break;
 			    case 'mkdir':
+			    var o = file.checkPermission(false,user.curUser,2)
+			    	if (o!=true) {
+			    		out.error(o);
+			    		break;
+			    	}
 			    	file.createFile(args[0],'folder',user.curUser)
 			    	count =0;
 			    break;
 			    case 'rm':
+			    var o = file.checkPermission(args[0],user.curUser,2)
+			    	if (o!=true) {
+			    		out.error(o);
+			    		break;
+			    	}
 			    	file.rmFile(args[0])
 			    	count =0;
 			    break;
 			    case 'cd':
+			    var o = file.checkPermission(args[0],user.curUser,4)
+			    	if (o!=true) {
+			    		out.error(o);
+			    		break;
+			    	}
 			    	let output1 = file.cdFolder(args[0]);
 			    	if (output1 == 1) {
 			    		path.push(args[0]);
@@ -88,23 +108,59 @@ function order() {
 			    	count =0;
 			    break;
 			    case 'cat':
+			    var o = file.checkPermission(args[0],user.curUser,4)
+			    	if (o!=true) {
+			    		out.error(o);
+			    		break;
+			    	}
 			    let output = file.catFile(args[0]);
 			    	output!==false?out.data(output):out.error('没有这个文件');
 			    	count =0;
 			    break;
 			    case 'w':
+			    var o = file.checkPermission(args[0],user.curUser,2)
+			    	if (o!=true) {
+			    		out.error(o);
+			    		break;
+			    	}
 			    	out.error(file.wFile(args));
 			    	count =0;
 			    break;
+			    case 'su':
+			    	var o = user.login(args[0],args[1]);
+			    	o?console.log(colors.info(user.curUser)):out.error("用户名或密码错误")
+			    	
+			    	count =0;
+			    break;
+			    case 'chmod':
+			    var o = file.checkPermission(args[0],user.curUser,0)
+			    	if (o!=true) {
+			    		out.error(o);
+			    		break;
+			    	}
+			    	var outs = file.chmod(args[0],args[1],user.curUser);
+			    	outs!==false?out.error(outs):1;
+			    	count =0;
+			    break;
 			    default:
-			      console.log('Say what?');
+			      console.log(colors.info('帮助文档'));
+			      console.log(colors.info('ls ;show file list'));
+			      console.log(colors.info('touch fileName'));
+			      console.log(colors.info('mkdir folderName'));
+			      console.log(colors.info('rm folderOrfileName'));
+			      console.log(colors.info('cd folderName'));
+			      console.log(colors.info('cat fileName'));
+			      console.log(colors.info('w fileName'));
+			      console.log(colors.info('useradd Name Password'));
+			      console.log(colors.info('su Name Password;切换用户'));
+			      console.log(colors.info('chmod fileName Permissions;修改文件权限'));
 			      break;
 			  }
 			  !count&&(args.length=0);
 	    }
 	  rl.prompt();
 	}).on('close', () => {
-	  console.log('Have a great day!');
+	  console.log(colors.rainbow('Have a great day!'))
 	  process.exit(0);
 	});	
 }
