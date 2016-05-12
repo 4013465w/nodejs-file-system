@@ -39,6 +39,6 @@ chmod fileName Permissions;修改文件权限
 ![截图](http://www.fddcn.cn/wp-content/uploads/2016/05/sasas-300x196.png)
 ##License
 
-The MIT License (MIT)
+The MIT License (MIT).
 
 Copyright (c) 2016 Zhen.Wang
