@@ -7,6 +7,11 @@ module.exports = class User {
 		};
 		this.curUser = null;
 	}
+	/**
+		 * 登陆
+		 * userid：用户名
+		 * pwd；密码
+		 */
 	login(userid, pwd) {
 			if (this.users.hasOwnProperty(userid) && this.users[userid].pwd === pwd) {
 				this.curUser = userid;
@@ -16,6 +21,8 @@ module.exports = class User {
 		}
 		/**
 		 * 新建用户
+		 * userid：用户名
+		 * pwd；密码
 		 */
 	createUser(userid, pwd) {
 		if (this.curUser!=='root') {

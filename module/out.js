@@ -12,7 +12,7 @@ colors.setTheme({
   error: 'red'
 });
 
-exports.list = function(arr,inode) {
+exports.list = function(arr,inode) {//列表循环输出
 	arr.forEach((file,index)=>{
 	let ind =inode[file.id];
 	let str = index+'  '+file.name+'  size:'+ind.size+'  time:'+ind.time+' author:'+ind.author+' P:'+ind.Permissions;
@@ -21,10 +21,10 @@ exports.list = function(arr,inode) {
 	})
 }
 
-exports.error = function (str) {
+exports.error = function (str) {//错误时的输出
 
 	str&&console.log(colors.error(str));
 }
-exports.data = function (str) {
+exports.data = function (str) {//输出数据时的输出
 	str&&console.log(colors.data(str));
 }
